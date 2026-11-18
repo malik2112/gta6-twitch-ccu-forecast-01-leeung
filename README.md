@@ -28,9 +28,9 @@ under the 8 s per-case limit (~0.05 s a case locally).
 The case file ships `comparables`: past big launches' hourly Twitch
 category counts. This entry assumes no functional form at all — it
 forecasts from the launches whose hour 1 was closest in size to this
-launch's hour 1 (k-nearest neighbours in log hour-1 viewers, K = 8):
+launch's hour 1 (k-nearest neighbours in log hour-1 viewers, K = 16):
 
-- For each forecast hour `h`, take the 8 comparables nearest in
+- For each forecast hour `h`, take the 16 comparables nearest in
   `log(viewers_1)` that have a print for hour `h`.
 - The median forecast is the distance-weighted median of those
   neighbours' `log(viewers_h / viewers_1)`, smoothed across hours
@@ -60,7 +60,7 @@ loss on log scale:
 
 | set | this model | house persistence baseline |
 | --- | --- | --- |
-| all 37 usable comparables (× 4 practice cases) | **0.503** | 0.930 |
+| all 37 usable comparables (× 4 practice cases) | **0.464** | 0.930 |
 
 Local checks on the kit's four practice cases: outputs valid (23 rows,
 five non-decreasing quantiles each), byte-identical across two runs,
